@@ -10,14 +10,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 
 @Entity
+@Table(name="idioma")
 public class Idioma {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Column(name="idIdioma")
+	private Integer idIdioma;
 	
 	@Column(columnDefinition="TEXT")
 	private String nombre;
@@ -27,26 +30,27 @@ public class Idioma {
 	
 	@JoinTable(
         name = "idiomapaises",
-        joinColumns = @JoinColumn(name = "FK_IDIOMA", nullable = false),
-        inverseJoinColumns = @JoinColumn(name="FK_PAIS", nullable = false)
+        joinColumns = @JoinColumn(name = "IDIOMAS_ID", nullable = false),
+        inverseJoinColumns = @JoinColumn(name="PAISES_ID", nullable = false)
     )
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Pais> paises;
 	
+	public Idioma() { }
 	
-	public Idioma(Integer id, String nombre, String abreviatura) {
+	public Idioma(Integer idIdioma, String nombre, String abreviatura) {
 		super();
-		this.id = id;
+		this.idIdioma = idIdioma;
 		this.nombre = nombre;
 		this.abreviatura = abreviatura;
 	}
 	
-	public Integer getId() {
-		return id;
+	public Integer getIdIdioma() {
+		return idIdioma;
 	}
 	
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdIdioma(Integer idIdioma) {
+		this.idIdioma = idIdioma;
 	}
 	
 	public String getNombre() {

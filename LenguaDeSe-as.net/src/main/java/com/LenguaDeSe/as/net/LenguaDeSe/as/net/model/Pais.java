@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +16,8 @@ import javax.persistence.Table;
 public class Pais {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "TINYINT")
-	private Integer id;
+	@Column(name="idPais", columnDefinition = "TINYINT")
+	private Integer idPais;
 	
 	@Column(columnDefinition="TEXT")
 	private String pais;
@@ -27,23 +28,24 @@ public class Pais {
 	@ManyToMany(mappedBy = "paises")
     private List<Idioma> idiomas;
 
-	// TODO: Implementar clases Lengua y Estado
+	// TODO: Implementar clases Lengua
 	// private List<Lengua> lenguas;
-	// private List<Estado> estados;
 	
-	public Pais(Integer id, String pais, String abraviatura) {
+	public Pais() { }
+	
+	public Pais(Integer idPais, String pais, String abraviatura) {
 		super();
-		this.id = id;
+		this.idPais = idPais;
 		this.pais = pais;
 		this.abraviatura = abraviatura;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getIdPais() {
+		return idPais;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdPais(Integer idPais) {
+		this.idPais = idPais;
 	}
 
 	public String getPais() {
