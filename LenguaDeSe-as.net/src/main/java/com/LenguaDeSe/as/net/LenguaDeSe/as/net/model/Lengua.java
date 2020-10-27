@@ -30,12 +30,13 @@ public class Lengua {
 	private String abreviatura;
 	
 	@JoinTable(
-	        name = "lenguapaises",
-	        joinColumns = @JoinColumn(name = "LENGUAS_ID", nullable = false),
-	        inverseJoinColumns = @JoinColumn(name="PAISES_ID", nullable = false)
-	    )
-		@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-		private List<Pais> paises;
+		name = "lenguapaises",
+		joinColumns = @JoinColumn(name = "LENGUAS_ID", nullable = false),
+		inverseJoinColumns = @JoinColumn(name="PAISES_ID", nullable = false)
+	)
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Pais> paises;
+	
 	public Lengua () {
 	}
 	

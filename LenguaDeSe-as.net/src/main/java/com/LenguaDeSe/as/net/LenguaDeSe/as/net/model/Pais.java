@@ -31,9 +31,11 @@ public class Pais {
 	
 	@ManyToMany(mappedBy = "paises")
     private List<Idioma> idiomas;
-
-	@JoinColumn(name="lenguapaises")
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	
+	@OneToMany(mappedBy = "pais")
+	private List<Estado> estados;
+	
+	@ManyToMany(mappedBy="paises")
 	private List<Lengua> lenguas;
 	
 	public Pais() { }
