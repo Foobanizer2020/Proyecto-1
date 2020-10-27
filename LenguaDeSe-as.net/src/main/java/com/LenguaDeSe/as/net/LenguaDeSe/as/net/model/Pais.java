@@ -2,13 +2,17 @@ package com.LenguaDeSe.as.net.LenguaDeSe.as.net.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,8 +32,9 @@ public class Pais {
 	@ManyToMany(mappedBy = "paises")
     private List<Idioma> idiomas;
 
-	// TODO: Implementar clases Lengua
-	// private List<Lengua> lenguas;
+	@JoinColumn(name="lenguapaises")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Lengua> lenguas;
 	
 	public Pais() { }
 	
