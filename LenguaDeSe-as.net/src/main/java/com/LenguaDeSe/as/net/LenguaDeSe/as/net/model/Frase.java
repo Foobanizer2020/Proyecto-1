@@ -25,8 +25,8 @@ public class Frase {
 	private String contenido;
 	
 	@ManyToOne
-	@JoinColumn(name="Fcategorías")
-	private Fcategoría fcategoría;
+	@JoinColumn(name="Fcategoria")
+	private Fcategoria fcategoria;
 
 	@ManyToOne
 	@JoinColumn(name="lenguas")
@@ -36,12 +36,12 @@ public class Frase {
 		
 	}
 
-	public Frase(Integer idFrase, String gif, String contenido, Fcategoría fcategoría, Lengua lengua) {
+	public Frase(Integer idFrase, String gif, String contenido, Fcategoria fcategoria, Lengua lengua) {
 		super();
 		this.idFrase = idFrase;
 		this.gif = gif;
 		this.contenido = contenido;
-		this.fcategoría = fcategoría;
+		this.fcategoria = fcategoria;
 		this.lengua = lengua;
 	}
 
@@ -69,12 +69,12 @@ public class Frase {
 		this.contenido = contenido;
 	}
 
-	public Fcategoría getFcategoría() {
-		return fcategoría;
+	public Fcategoria getFcategoria() {
+		return fcategoria;
 	}
 
-	public void setFcategoría(Fcategoría fcategoría) {
-		this.fcategoría = fcategoría;
+	public void setFcategoría(Fcategoria fcategoria) {
+		this.fcategoria = fcategoria;
 	}
 
 	public Lengua getLengua() {

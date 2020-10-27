@@ -9,39 +9,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Fcategoría {
+@Table(name="fcategorias")
+public class Fcategoria {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idFcategoría", columnDefinition = "TINYINT")
-	private Integer idFcategoría;
+	@Column(name="idFcategoria", columnDefinition = "TINYINT")
+	private Integer idFcategoria;
 	
 	@Column(columnDefinition="TEXT")
 	private String nombre;
 	
-	@OneToMany(fetch =FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="frases")
-	private Frase frase;
-	
-	public Fcategoría () {
+	public Fcategoria () {
 		
 	}
 
-	public Fcategoría(Integer idFcategoría, String nombre, Frase frase) {
+	public Fcategoria(Integer idFcategoria, String nombre) {
 		super();
-		this.idFcategoría = idFcategoría;
+		this.idFcategoria = idFcategoria;
 		this.nombre = nombre;
-		this.frase = frase;
 	}
 
-	public Integer getIdFcategoría() {
-		return idFcategoría;
+	public Integer getIdFcategoria() {
+		return idFcategoria;
 	}
 
-	public void setIdFcategoría(Integer idFcategoría) {
-		this.idFcategoría = idFcategoría;
+	public void setIdFcategoria(Integer idFcategoria) {
+		this.idFcategoria = idFcategoria;
 	}
 
 	public String getNombre() {
@@ -51,13 +48,4 @@ public class Fcategoría {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public Frase getFrase() {
-		return frase;
-	}
-
-	public void setFrase(Frase frase) {
-		this.frase = frase;
-	}
-
 }
