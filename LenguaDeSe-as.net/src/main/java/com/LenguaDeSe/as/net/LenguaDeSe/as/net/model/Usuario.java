@@ -21,6 +21,9 @@ public class Usuario {
 	@Column(name="password")
 	private String password;
 	
+	@Column (name="tipo_usuario")
+	private String  tipo_usuario;
+	
 	@ManyToOne
 	@JoinColumn(name="pais")
 	private Pais pais;
@@ -35,11 +38,12 @@ public class Usuario {
 
 	public Usuario() { }
 	
-	public Usuario(Integer idUsuario, String email, String password, Pais pais, Estado estado, Idioma idioma) {
+	public Usuario(Integer idUsuario, String email, String password, String  tipo_usuario, Pais pais, Estado estado, Idioma idioma) {
 		super();
 		this.idUsuario = idUsuario;
 		this.email = email;
 		this.password = password;
+		this.tipo_usuario = tipo_usuario;
 		this.pais = pais;
 		this.estado = estado;
 		this.idioma = idioma;
@@ -67,6 +71,14 @@ public class Usuario {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getTipo_usuario() {
+		return tipo_usuario;
+	}
+
+	public void setTipo_usuario(String tipo_usuario) {
+		this.tipo_usuario = tipo_usuario;
 	}
 
 	public Pais getPais() {
