@@ -1,4 +1,4 @@
-package com.LenguaDeSe.as.net.LenguaDeSe.as.net.services;
+package com.LenguaDeSe.as.net.LenguaDeSe.as.net.service;
 
 import java.util.List;
 

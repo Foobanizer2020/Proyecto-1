@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.LenguaDeSe.as.net.LenguaDeSe.as.net.services.UsuarioServices;
 import com.LenguaDeSe.as.net.LenguaDeSe.as.net.model.*;
+import com.LenguaDeSe.as.net.LenguaDeSe.as.net.service.UsuarioServices;
 
 @RestController
 public class UsuarioCtrl {
