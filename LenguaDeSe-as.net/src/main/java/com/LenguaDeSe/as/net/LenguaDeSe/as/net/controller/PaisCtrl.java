@@ -19,12 +19,20 @@ public class PaisCtrl {
 	@Autowired
 	private PaisService servPais;
 	
+<<<<<<< HEAD
 	@GetMapping("/paises")
+=======
+	@GetMapping("")
+>>>>>>> 042b4cdb49029ce9966fd1a01d400ee357663402
 	public ResponseEntity<Object> getPaises() {
 		return new ResponseEntity<>(servPais.getPaises(), HttpStatus.OK);
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/pais/{id}")
+=======
+	@GetMapping("{id}")
+>>>>>>> 042b4cdb49029ce9966fd1a01d400ee357663402
 	public ResponseEntity<Object> getPais(@PathVariable Integer id) {
 		Pais pais = servPais.getPais(id);
 		if (pais != null) {

@@ -45,12 +45,19 @@ public class PaisServiceImp implements PaisService{
 		}
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 042b4cdb49029ce9966fd1a01d400ee357663402
 	@Override
 	public Pais deletePais(Pais pais) {
 		pais = this.getPais(pais.getIdPais());
 		repoPais.delete(pais);
 		return pais;
+<<<<<<< HEAD
 	}
 
+=======
+	}	
+>>>>>>> 042b4cdb49029ce9966fd1a01d400ee357663402
 }
