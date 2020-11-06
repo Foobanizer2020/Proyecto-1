@@ -45,8 +45,8 @@ public class EstadoServiceImp implements EstadoService{
 	}
 
 	@Override
-	public Estado deleteEstado(Estado estado) {
-		estado = this.getEstado(estado.getIdEstado());
+	public Estado deleteEstado(Integer id) {
+		Estado estado = this.getEstado(id);
 		repoEstado.delete(estado);
 		return estado;
 	}	

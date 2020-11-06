@@ -9,5 +9,5 @@ public interface EstadoService {
 	public abstract Estado getEstado(Integer id);
 	public abstract Estado createEstado(Estado estado);
 	public abstract Estado updateEstado(Estado estado);
-	public abstract Estado deleteEstado(Estado estado);
+	public abstract Estado deleteEstado(Integer id);
 }
