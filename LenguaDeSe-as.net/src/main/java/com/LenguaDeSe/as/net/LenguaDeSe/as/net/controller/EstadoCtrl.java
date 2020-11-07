@@ -26,7 +26,7 @@ public class EstadoCtrl {
 	private EstadoService servEstado;
 	
 	@GetMapping("/pais/{idPais}")
-	public ResponseEntity<Object> getEstados(@PathVariable Integer idPais) {
+	public ResponseEntity<Object> getEstadosPais(@PathVariable Integer idPais) {
 		return new ResponseEntity<>(servEstado.getEstados(idPais), HttpStatus.OK);
 	}
 	

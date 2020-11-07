@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Estado {
@@ -18,13 +16,11 @@ public class Estado {
 	@Column(name="nombre", columnDefinition="TEXT")
 	private String nombre;
 	
-	@ManyToOne
-	@JoinColumn(name="pais")
-	private Pais pais;
+	private Integer pais;
 
 	public Estado() { }
 
-	public Estado(Integer idEstado, String nombre, Pais pais) {
+	public Estado(Integer idEstado, String nombre, Integer pais) {
 		super();
 		this.idEstado = idEstado;
 		this.nombre = nombre;
@@ -47,11 +43,11 @@ public class Estado {
 		this.nombre = nombre;
 	}
 
-	public Pais getPais() {
+	public Integer getPais() {
 		return pais;
 	}
 
-	public void setPais(Pais pais) {
+	public void setPais(Integer pais) {
 		this.pais = pais;
 	}
 }
