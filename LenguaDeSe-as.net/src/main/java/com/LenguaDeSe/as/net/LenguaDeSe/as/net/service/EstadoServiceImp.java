@@ -16,8 +16,8 @@ public class EstadoServiceImp implements EstadoService{
 	private EstadoRepository repoEstado;
 
 	@Override
-	public List<Estado> getEstados() {
-		return repoEstado.findAll();
+	public List<Estado> getEstados(Integer paisId) {
+		return repoEstado.findByPaisId(paisId);
 	}
 
 	@Override

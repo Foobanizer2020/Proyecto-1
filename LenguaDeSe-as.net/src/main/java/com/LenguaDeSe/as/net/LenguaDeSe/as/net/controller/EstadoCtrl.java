@@ -25,9 +25,9 @@ public class EstadoCtrl {
 	@Autowired
 	private EstadoService servEstado;
 	
-	@GetMapping("")
-	public ResponseEntity<Object> getEstados() {
-		return new ResponseEntity<>(servEstado.getEstados(), HttpStatus.OK);
+	@GetMapping("/pais/{idPais}")
+	public ResponseEntity<Object> getEstados(@PathVariable Integer idPais) {
+		return new ResponseEntity<>(servEstado.getEstados(idPais), HttpStatus.OK);
 	}
 	
 	@GetMapping("{id}")
