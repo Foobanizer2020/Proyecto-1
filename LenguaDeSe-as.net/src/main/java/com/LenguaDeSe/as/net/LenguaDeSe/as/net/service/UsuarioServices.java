@@ -14,5 +14,6 @@ public interface UsuarioServices {
 	public abstract void updateUsuario(int id, Usuario usiario);
 	public abstract void deleteUsuario(int id);
 
+	public abstract ResponseEntity<Object> registrarUsuario(Usuario usuario);
 	public abstract UserDetails loadUserByUsername(String email);
 }
