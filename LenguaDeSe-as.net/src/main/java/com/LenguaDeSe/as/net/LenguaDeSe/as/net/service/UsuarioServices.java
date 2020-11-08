@@ -4,6 +4,7 @@ package com.LenguaDeSe.as.net.LenguaDeSe.as.net.service;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.LenguaDeSe.as.net.LenguaDeSe.as.net.model.*;
 public interface UsuarioServices {
@@ -13,4 +14,5 @@ public interface UsuarioServices {
 	public abstract void updateUsuario(int id, Usuario usiario);
 	public abstract void deleteUsuario(int id);
 
+	public abstract UserDetails loadUserByUsername(String email);
 }

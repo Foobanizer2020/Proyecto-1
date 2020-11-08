@@ -1,12 +1,15 @@
 package com.LenguaDeSe.as.net.LenguaDeSe.as.net.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario {
@@ -21,8 +24,12 @@ public class Usuario {
 	@Column(name="password")
 	private String password;
 	
-	@Column (name="tipo_usuario")
-	private String  tipo_usuario;
+	@OneToOne(optional=true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="id_tipo_usuario", insertable=false, updatable=false)
+	private TipoUsuario tipo_usuario;
+	
+	@Column(name="id_tipo_usuario")
+	private Integer id_tipo_usuario;
 	
 	@ManyToOne
 	@JoinColumn(name="pais")
@@ -37,13 +44,15 @@ public class Usuario {
 	private Idioma idioma;
 
 	public Usuario() { }
-	
-	public Usuario(Integer idUsuario, String email, String password, String  tipo_usuario, Pais pais, Estado estado, Idioma idioma) {
+
+	public Usuario(Integer idUsuario, String email, String password, TipoUsuario tipo_usuario, Integer id_tipo_usuario,
+			Pais pais, Estado estado, Idioma idioma) {
 		super();
 		this.idUsuario = idUsuario;
 		this.email = email;
 		this.password = password;
 		this.tipo_usuario = tipo_usuario;
+		this.id_tipo_usuario = id_tipo_usuario;
 		this.pais = pais;
 		this.estado = estado;
 		this.idioma = idioma;
@@ -73,12 +82,20 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public String getTipo_usuario() {
+	public TipoUsuario getTipo_usuario() {
 		return tipo_usuario;
 	}
 
-	public void setTipo_usuario(String tipo_usuario) {
+	public void setTipo_usuario(TipoUsuario tipo_usuario) {
 		this.tipo_usuario = tipo_usuario;
+	}
+
+	public Integer getId_tipo_usuario() {
+		return id_tipo_usuario;
+	}
+
+	public void setId_tipo_usuario(Integer id_tipo_usuario) {
+		this.id_tipo_usuario = id_tipo_usuario;
 	}
 
 	public Pais getPais() {

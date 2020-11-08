@@ -7,5 +7,5 @@ import com.LenguaDeSe.as.net.LenguaDeSe.as.net.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository <Usuario,Integer> {
-
+	Usuario findByEmail(String email);
 }

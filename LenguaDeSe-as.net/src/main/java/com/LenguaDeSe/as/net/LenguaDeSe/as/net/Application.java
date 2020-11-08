@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.LenguaDeSe.as.net.LenguaDeSe.as.net/*" })
 public class Application {
 
 	public static void main(String[] args) {
