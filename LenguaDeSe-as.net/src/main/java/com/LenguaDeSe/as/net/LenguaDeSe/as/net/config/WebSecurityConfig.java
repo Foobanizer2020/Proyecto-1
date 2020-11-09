@@ -36,7 +36,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Reglas para restringir acceso segun roles de usuario
 		http.httpBasic().disable().csrf().disable().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests() 
-		.antMatchers("/api/autenticacion/login/**", "/api/autenticacion/registro/**").permitAll()
+		.antMatchers(
+				"/api/autenticacion/login/**", 
+				"/api/autenticacion/registro/**",
+				"/pais/paises",
+				"/api/estado/pais/**"
+		).permitAll()
 		.antMatchers("/api/estado/**").hasAuthority("ADMINISTRADOR").anyRequest().authenticated().and().csrf()
 		.disable().exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint()).and()
 		.apply(new JwtConfigurer(jwtTokenProvider));

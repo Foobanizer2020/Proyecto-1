@@ -31,22 +31,19 @@ public class Usuario {
 	@Column(name="id_tipo_usuario")
 	private Integer id_tipo_usuario;
 	
-	@ManyToOne
-	@JoinColumn(name="pais")
-	private Pais pais;
+	@Column(name="pais")
+	private Integer pais;
 	
-	@ManyToOne
-	@JoinColumn(name="estado")
-	private Estado estado;
+	@Column(name="estado")
+	private Integer estado;
 	
-	@ManyToOne
-	@JoinColumn(name="idioma")
-	private Idioma idioma;
+	@Column(name="idioma")
+	private Integer idioma;
 
 	public Usuario() { }
 
 	public Usuario(Integer idUsuario, String email, String password, TipoUsuario tipo_usuario, Integer id_tipo_usuario,
-			Pais pais, Estado estado, Idioma idioma) {
+			Integer pais, Integer estado, Integer idioma) {
 		super();
 		this.idUsuario = idUsuario;
 		this.email = email;
@@ -98,27 +95,27 @@ public class Usuario {
 		this.id_tipo_usuario = id_tipo_usuario;
 	}
 
-	public Pais getPais() {
+	public Integer getPais() {
 		return pais;
 	}
 
-	public void setPais(Pais pais) {
+	public void setPais(Integer pais) {
 		this.pais = pais;
 	}
 
-	public Estado getEstado() {
+	public Integer getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Estado estado) {
+	public void setEstado(Integer estado) {
 		this.estado = estado;
 	}
 
-	public Idioma getIdioma() {
+	public Integer getIdioma() {
 		return idioma;
 	}
 
-	public void setIdioma(Idioma idioma) {
+	public void setIdioma(Integer idioma) {
 		this.idioma = idioma;
 	}
 }
