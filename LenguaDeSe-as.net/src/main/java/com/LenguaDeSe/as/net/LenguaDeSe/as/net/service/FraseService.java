@@ -8,6 +8,6 @@ public interface FraseService {
 	public abstract List<Frase> getFrasesByFiltro();
 	public abstract Frase getFrase(Integer id);
 	public abstract Frase createFrase(Frase frase);
-	public abstract Frase updateFrase(Integer id, Frase frase);
+	public abstract Frase updateFrase(Frase frase);
 	public abstract Frase deleteFrase(Integer id);
 }

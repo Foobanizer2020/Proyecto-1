@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.LenguaDeSe.as.net.LenguaDeSe.as.net.model.Frase;
 import com.LenguaDeSe.as.net.LenguaDeSe.as.net.repository.FraseRepository;
 
+@Service
 public class FraseServiceImp implements FraseService {
 
 	@Autowired 
@@ -34,7 +36,7 @@ public class FraseServiceImp implements FraseService {
 	}
 
 	@Override
-	public Frase updateFrase(Integer id, Frase frase) {
+	public Frase updateFrase(Frase frase) {
 		if (this.getFrase(frase.getIdFrase()) != null) { 
 			return repoFrase.save(frase);
 		} else {
