@@ -35,7 +35,7 @@ public class UsuarioCtrl {
 	
 	@PostMapping("/usuario")
 	public ResponseEntity <Object> createUsuario(@Valid @RequestBody Usuario usuario) {
-		ResponseEntity<Object> savedUsuario = usuarioServices.createUsuario(usuario);
+		usuarioServices.createUsuario(usuario);
 		return null;
 	}
 	
