@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,19 +22,17 @@ public class Frase {
 	@Column(columnDefinition="TEXT")
 	private String contenido;
 	
-	@ManyToOne
-	@JoinColumn(name="Fcategoria")
-	private Fcategoria fcategoria;
+	@Column(name="fcategoria")
+	private Integer fcategoria;
 
-	@ManyToOne
-	@JoinColumn(name="lenguas")
-	private Lengua lengua;
+	@Column(name="lengua")
+	private Integer lengua;
 	
 	public Frase () {
 		
 	}
 
-	public Frase(Integer idFrase, String gif, String contenido, Fcategoria fcategoria, Lengua lengua) {
+	public Frase(Integer idFrase, String gif, String contenido, Integer fcategoria, Integer lengua) {
 		super();
 		this.idFrase = idFrase;
 		this.gif = gif;
@@ -69,19 +65,19 @@ public class Frase {
 		this.contenido = contenido;
 	}
 
-	public Fcategoria getFcategoria() {
+	public Integer getFcategoria() {
 		return fcategoria;
 	}
 
-	public void setFcategoría(Fcategoria fcategoria) {
+	public void setFcategoría(Integer fcategoria) {
 		this.fcategoria = fcategoria;
 	}
 
-	public Lengua getLengua() {
+	public Integer getLengua() {
 		return lengua;
 	}
 
-	public void setLengua(Lengua lengua) {
+	public void setLengua(Integer lengua) {
 		this.lengua = lengua;
 	}
 	
