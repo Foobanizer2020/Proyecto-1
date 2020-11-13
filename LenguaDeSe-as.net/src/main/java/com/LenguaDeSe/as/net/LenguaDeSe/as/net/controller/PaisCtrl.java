@@ -25,12 +25,12 @@ public class PaisCtrl {
 	@Autowired
 	private PaisService servPais;
 	
-	@GetMapping("/paises")
+	@GetMapping("")
 	public ResponseEntity<Object> getPaises() {
 		return new ResponseEntity<>(servPais.getPaises(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/pais/{id}")
+	@GetMapping("{id}")
 	public ResponseEntity<Object> getPais(@PathVariable Integer id) {
 		Pais pais = servPais.getPais(id);
 		if (pais != null) {
@@ -43,7 +43,7 @@ public class PaisCtrl {
 			
 		}
 	}
-	@PostMapping("/pais")
+	@PostMapping("")
 	public ResponseEntity<Object> createPais(@Valid @RequestBody Pais pais){
 		servPais.createPais(pais);
 			
@@ -52,7 +52,7 @@ public class PaisCtrl {
 			response.put("message","Pais creado exitosamente");
 			return new ResponseEntity<>(response,HttpStatus.CREATED);
 		}
-	@PutMapping("/pais/{id}")
+	@PutMapping("{id}")
 	public ResponseEntity<Object> updatePais(@Valid @RequestBody Pais pais){
 		
 		servPais.updatePais(pais);
@@ -62,7 +62,7 @@ public class PaisCtrl {
 			response.put("message","Pais actuaizado exitosamente");
 			return new ResponseEntity<>(response,HttpStatus.OK);
 		}
-	@DeleteMapping("/pais/{id}")
+	@DeleteMapping("{id}")
 	public ResponseEntity<Object> deletPais(@PathVariable Pais pais){
 		servPais.deletePais(pais);
 		
