@@ -29,12 +29,12 @@ public class FcategoriaCtrl {
 	private FcategoriaService fcategoriaService;
 	
 	
-	@GetMapping("/fcategoria")
+	@GetMapping("")
 	public ResponseEntity<Object> getFcategoria() {
 		return new ResponseEntity<>(fcategoriaService.getFcategorias(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/fcategoria/{id}")
+	@GetMapping("{id}")
 	public ResponseEntity<Object> getFcategoria(@PathVariable Integer id) {
 		Fcategoria fcategoria = fcategoriaService.getFcategoria(id);
 		if (fcategoria != null) {
@@ -55,7 +55,7 @@ public class FcategoriaCtrl {
 			response.put("message","Fcategoria creada exitosamente");
 			return new ResponseEntity<>(response,HttpStatus.CREATED);
 		}
-	@PutMapping("/fcategoria/{id}")
+	@PutMapping("{id}")
 	public ResponseEntity<Object> updateFcategoria(@Valid @RequestBody Fcategoria fcategoria){
 		
 		fcategoriaService.updateFcategoria(fcategoria);
@@ -66,7 +66,7 @@ public class FcategoriaCtrl {
 			return new ResponseEntity<>(response,HttpStatus.OK);
 			
 		}
-	@DeleteMapping("/fcategoria/{id}")
+	@DeleteMapping("{id}")
 	public ResponseEntity<Object> deleteFcategoria(@PathVariable Integer id) {
 		fcategoriaService.deleteFcategoria(id);
 		

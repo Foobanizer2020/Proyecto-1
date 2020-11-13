@@ -40,12 +40,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/api/autenticacion/login/**", 
 				"/api/autenticacion/registro/**",
 				"/api/pais",
+				"/api/fcategoria",
 				"/api/estado/pais/**",
 				"/v3/api-docs/**",
 				"/swagger-ui/**",
 				"/swagger-ui*"
 		).permitAll()
-		.antMatchers("/api/estado/**", "/api/pais/**").hasAuthority("ADMINISTRADOR").anyRequest().authenticated().and().csrf()
+		.antMatchers("/api/estado/**", "/api/pais/**", "/api/fcategoria/**").hasAuthority("ADMINISTRADOR").anyRequest().authenticated().and().csrf()
 		.disable().exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint()).and()
 		.apply(new JwtConfigurer(jwtTokenProvider));
 		
