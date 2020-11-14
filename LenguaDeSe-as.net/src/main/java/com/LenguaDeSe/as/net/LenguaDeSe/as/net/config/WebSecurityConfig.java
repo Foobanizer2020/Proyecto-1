@@ -44,7 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/api/frase",
 				"/v3/api-docs/**",
 				"/swagger-ui/**",
-				"/swagger-ui*"
+				"/swagger-ui*",
+				"/videos/**"	
 		).permitAll()
 		.antMatchers(
 				"/api/estado/**",

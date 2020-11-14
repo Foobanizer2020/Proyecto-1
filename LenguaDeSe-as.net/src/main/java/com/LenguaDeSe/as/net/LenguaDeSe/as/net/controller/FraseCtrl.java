@@ -45,8 +45,15 @@ public class FraseCtrl {
 	
 	@PostMapping("")
 	public ResponseEntity<Object> createFrase(@Valid @RequestBody Frase frase) {
-		fraseService.createFrase(frase);
 		HashMap<String, String> response = new HashMap<>();
+		try {
+			fraseService.createFrase(frase);
+		} catch (Exception e) {
+			response.put("status", "failure");
+			response.put("message", "Error al guardar la frase.");
+			response.put("exception", e.getMessage());
+			return new ResponseEntity<>(response, HttpStatus.valueOf(500));
+		}
 		response.put("status", "created");
 		response.put("message", "Frase guardado exitosamente.");
 		return new ResponseEntity<>(response, HttpStatus.OK);

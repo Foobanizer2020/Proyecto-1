@@ -1,5 +1,10 @@
 package com.LenguaDeSe.as.net.LenguaDeSe.as.net.service;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,10 +36,21 @@ public class FraseServiceImp implements FraseService {
 	}
 
 	@Override
-	public Frase createFrase(Frase frase) {
-		return repoFrase.save(frase);
+	public Frase createFrase(Frase frase) throws FileNotFoundException, IOException {
+		byte[] videoByte = Base64.getDecoder().decode(frase.getGif().substring(frase.getGif().indexOf(",") + 1));
+		frase.setGif(null);
+		frase = repoFrase.save(frase);
+		
+		String basePath = "./src/main/resources/static/videos/frases/";
+	    String fileName = frase.getIdFrase().toString() + ".mp4";
+		String directory = "videos/frases/" + fileName;
+		frase.setGif(directory);
+		frase = repoFrase.save(frase);
+		
+        new FileOutputStream(basePath + fileName).write(videoByte);
+        return frase;
 	}
-
+		
 	@Override
 	public Frase updateFrase(Frase frase) {
 		if (this.getFrase(frase.getIdFrase()) != null) { 
@@ -47,6 +63,12 @@ public class FraseServiceImp implements FraseService {
 	@Override
 	public Frase deleteFrase(Integer id) {
 		Frase frase = this.getFrase(id);
+		if (frase != null) {
+			String basePath = "./src/main/resources/static/videos/frases/";
+			String fileName = frase.getIdFrase().toString() + ".mp4";
+			File video = new File(basePath + fileName);
+			video.delete();
+		}
 		repoFrase.delete(frase);
 		return frase;
 	}
