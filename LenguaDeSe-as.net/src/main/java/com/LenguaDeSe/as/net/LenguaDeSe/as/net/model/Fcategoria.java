@@ -19,6 +19,7 @@ public class Fcategoria {
 	@Column(columnDefinition="TEXT")
 	private String nombre;
 	
+	
 	public Fcategoria () {
 		
 	}

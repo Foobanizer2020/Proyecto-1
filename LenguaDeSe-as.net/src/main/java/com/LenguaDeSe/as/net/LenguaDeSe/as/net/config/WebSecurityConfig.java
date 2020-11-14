@@ -39,7 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(
 				"/api/autenticacion/login/**", 
 				"/api/autenticacion/registro/**",
-				"/pais/paises",
+				"/api/pais",
+				"/api/fcategoria",
 				"/api/estado/pais/**",
 				"/api/frase",
 				"/v3/api-docs/**",
@@ -49,7 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		).permitAll()
 		.antMatchers(
 				"/api/estado/**",
-				"/api/frase/**"
+				"/api/frase/**",
+				"/api/fcategoria/**"
 		).hasAuthority("ADMINISTRADOR").anyRequest().authenticated()
 		.and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint())
 		.and().apply(new JwtConfigurer(jwtTokenProvider));
