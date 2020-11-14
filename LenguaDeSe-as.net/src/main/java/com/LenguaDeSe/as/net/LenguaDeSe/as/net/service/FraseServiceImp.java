@@ -17,6 +17,8 @@ import com.LenguaDeSe.as.net.LenguaDeSe.as.net.repository.FraseRepository;
 @Service
 public class FraseServiceImp implements FraseService {
 
+	private String basePath = "./target/classes/static/videos/frases/";
+	
 	@Autowired 
 	private FraseRepository repoFrase;
 	
@@ -41,7 +43,6 @@ public class FraseServiceImp implements FraseService {
 		frase.setGif(null);
 		frase = repoFrase.save(frase);
 		
-		String basePath = "./src/main/resources/static/videos/frases/";
 	    String fileName = frase.getIdFrase().toString() + ".mp4";
 		String directory = "videos/frases/" + fileName;
 		frase.setGif(directory);
@@ -64,7 +65,6 @@ public class FraseServiceImp implements FraseService {
 	public Frase deleteFrase(Integer id) {
 		Frase frase = this.getFrase(id);
 		if (frase != null) {
-			String basePath = "./src/main/resources/static/videos/frases/";
 			String fileName = frase.getIdFrase().toString() + ".mp4";
 			File video = new File(basePath + fileName);
 			video.delete();
