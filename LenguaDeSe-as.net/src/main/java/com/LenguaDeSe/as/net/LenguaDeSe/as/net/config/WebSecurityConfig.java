@@ -51,7 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(
 				"/api/estado/**",
 				"/api/frase/**",
-				"/api/fcategoria/**"
+				"/api/fcategoria/**",
+				"/api/lengua/**"
 		).hasAuthority("ADMINISTRADOR").anyRequest().authenticated()
 		.and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint())
 		.and().apply(new JwtConfigurer(jwtTokenProvider));
