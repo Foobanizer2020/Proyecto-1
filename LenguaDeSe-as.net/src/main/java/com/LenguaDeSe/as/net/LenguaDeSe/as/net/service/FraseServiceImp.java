@@ -37,6 +37,7 @@ public class FraseServiceImp implements FraseService {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public Frase createFrase(Frase frase) throws FileNotFoundException, IOException {
 		byte[] videoByte = Base64.getDecoder().decode(frase.getGif().substring(frase.getGif().indexOf(",") + 1));

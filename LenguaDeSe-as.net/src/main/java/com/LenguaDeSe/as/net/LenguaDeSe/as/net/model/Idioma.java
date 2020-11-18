@@ -2,17 +2,13 @@ package com.LenguaDeSe.as.net.LenguaDeSe.as.net.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 
 @Entity
 @Table(name="idioma")
@@ -28,21 +24,17 @@ public class Idioma {
 	@Column(columnDefinition="CHAR(2)")
 	private String abreviatura;
 	
-	@JoinTable(
-        name = "idiomapaises",
-        joinColumns = @JoinColumn(name = "IDIOMAS_ID", nullable = false),
-        inverseJoinColumns = @JoinColumn(name="PAISES_ID", nullable = false)
-    )
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToMany
 	private List<Pais> paises;
 	
 	public Idioma() { }
 	
-	public Idioma(Integer idIdioma, String nombre, String abreviatura) {
+	public Idioma(Integer idIdioma, String nombre, String abreviatura, List<Pais> paises) {
 		super();
 		this.idIdioma = idIdioma;
 		this.nombre = nombre;
 		this.abreviatura = abreviatura;
+		this.paises = paises;
 	}
 	
 	public Integer getIdIdioma() {
@@ -67,5 +59,13 @@ public class Idioma {
 	
 	public void setAbreviatura(String abreviatura) {
 		this.abreviatura = abreviatura;
+	}
+
+	public List<Pais> getPaises() {
+		return paises;
+	}
+
+	public void setPaises(List<Pais> paises) {
+		this.paises = paises;
 	}
 }
