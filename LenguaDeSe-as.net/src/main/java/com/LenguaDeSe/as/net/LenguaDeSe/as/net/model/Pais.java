@@ -1,13 +1,10 @@
 package com.LenguaDeSe.as.net.LenguaDeSe.as.net.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,12 +20,6 @@ public class Pais {
 	
 	@Column(columnDefinition="CHAR(2)")
 	private String abreviatura;
-	
-	@ManyToMany(mappedBy = "paises")
-    private List<Idioma> idiomas;
-	
-	@ManyToMany(mappedBy="paises")
-	private List<Lengua> lenguas;
 	
 	public Pais() { }
 	
