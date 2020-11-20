@@ -45,6 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/api/frase",
 				"/api/lengua",
 				"/api/idioma",
+				"/api/palabra",
 				"/v3/api-docs/**",
 				"/swagger-ui/**",
 				"/swagger-ui*",
@@ -55,7 +56,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/api/frase/**",
 				"/api/fcategoria/**",
 				"/api/lengua/**",
-				"/api/idioma/**"
+				"/api/idioma/**",
+				"/api/palabra/**"
 		).hasAuthority("ADMINISTRADOR").anyRequest().authenticated()
 		.and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint())
 		.and().apply(new JwtConfigurer(jwtTokenProvider));

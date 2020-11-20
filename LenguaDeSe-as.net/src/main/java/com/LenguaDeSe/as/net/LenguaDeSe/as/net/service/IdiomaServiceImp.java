@@ -46,8 +46,8 @@ public class IdiomaServiceImp implements IdiomaService {
 
 	@Override
 	public Idioma deleteIdioma(Integer id) {
-		Idioma Idioma = this.getIdioma(id);
-		repoIdioma.delete(Idioma);
-		return Idioma;
+		Idioma idioma = this.getIdioma(id);
+		repoIdioma.delete(idioma);
+		return idioma;
 	}
 }

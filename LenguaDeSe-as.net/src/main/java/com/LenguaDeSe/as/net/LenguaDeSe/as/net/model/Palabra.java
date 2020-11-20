@@ -1,11 +1,13 @@
 package com.LenguaDeSe.as.net.LenguaDeSe.as.net.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -26,21 +28,25 @@ public class Palabra {
     private String definicion;
 
     @ManyToOne
-    @JoinColumn(name="categoria")
     private Categoria categoria;
+    
+    @ManyToMany
+    private List<Senia> senias;
 
-    public Palabra(){
+    public Palabra(){ }
+    
+    public Palabra(Integer idPalabra, String nombre, String contextoSenia, String definicion, Categoria categoria,
+			List<Senia> senias) {
+		super();
+		this.idPalabra = idPalabra;
+		this.nombre = nombre;
+		this.contextoSenia = contextoSenia;
+		this.definicion = definicion;
+		this.categoria = categoria;
+		this.senias = senias;
+	}
 
-    }
-
-    public Palabra(Integer idPalabra,String nombre,String contextoSenia,String definicion,Categoria categoria){
-        this.categoria=categoria;
-        this.contextoSenia=contextoSenia;
-        this.definicion=definicion;
-        this.nombre=nombre;
-        this.idPalabra=idPalabra;
-    }
-    public Integer getIdPalabra() {
+	public Integer getIdPalabra() {
         return idPalabra;
     }
 
@@ -79,4 +85,12 @@ public class Palabra {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+	public List<Senia> getSenias() {
+		return senias;
+	}
+
+	public void setSenias(List<Senia> senias) {
+		this.senias = senias;
+	}
 }
