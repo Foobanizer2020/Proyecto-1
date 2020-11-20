@@ -43,6 +43,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/api/fcategoria",
 				"/api/estado/pais/**",
 				"/api/frase",
+				"/api/lengua",
+				"/api/idioma",
 				"/v3/api-docs/**",
 				"/swagger-ui/**",
 				"/swagger-ui*",
