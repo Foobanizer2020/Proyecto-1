@@ -46,22 +46,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/api/lengua",
 				"/api/idioma",
 				"/api/palabra",
+				"/api/categoria",
 				"/v3/api-docs/**",
 				"/swagger-ui/**",
 				"/swagger-ui*",
+				"/api/estado/**",
+				"/api/pais/**",
+				"/api/fcategoria",
 				"/videos/**"
 		).permitAll()
 		.antMatchers(
 				"/api/estado/**",
+				"/api/pais/**",
 				"/api/frase/**",
 				"/api/fcategoria/**",
+				"/api/categoria/**",
 				"/api/lengua/**",
 				"/api/idioma/**",
 				"/api/palabra/**"
 		).hasAuthority("ADMINISTRADOR").anyRequest().authenticated()
 		.and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint())
 		.and().apply(new JwtConfigurer(jwtTokenProvider));
-		
 		http.cors();
 	}
 	
