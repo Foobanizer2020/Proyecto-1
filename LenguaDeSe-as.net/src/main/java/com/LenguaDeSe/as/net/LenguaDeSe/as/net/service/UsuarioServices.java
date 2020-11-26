@@ -16,4 +16,5 @@ public interface UsuarioServices {
 
 	public abstract ResponseEntity<Object> registrarUsuario(Usuario usuario);
 	public abstract UserDetails loadUserByUsername(String email);
+	public abstract boolean resetPassword(String email);
 }

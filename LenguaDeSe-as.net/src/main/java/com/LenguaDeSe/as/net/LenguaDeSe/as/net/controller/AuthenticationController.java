@@ -65,4 +65,18 @@ public class AuthenticationController {
     	usuario.setId_tipo_usuario(1);
         return usuarios.registrarUsuario(usuario);
     }
+    
+    @PostMapping("/recuperacion")
+    public ResponseEntity<Object> restorePassword(@RequestBody AuthenticationBody data) {
+    	Map<String, String> response = new HashMap<>();
+    	if(usuarios.resetPassword(data.getEmail())) {
+    		response.put("status", "success");
+    		response.put("message", "Se restableció la contraseña y se envió un email");
+    		return new ResponseEntity<>(response, HttpStatus.OK);
+    	} 
+		response.put("status", "failure");
+		response.put("message", "Error al reestablecer la contraseña.");
+		return new ResponseEntity<>(response, HttpStatus.valueOf(500));
+    	
+    }
 }

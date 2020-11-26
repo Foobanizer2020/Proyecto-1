@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.LenguaDeSe.as.net.LenguaDeSe.as.net.model.AuthenticationBody;
 import com.LenguaDeSe.as.net.LenguaDeSe.as.net.model.Usuario;
 import com.LenguaDeSe.as.net.LenguaDeSe.as.net.repository.UsuarioRepository;
 
@@ -27,6 +29,9 @@ public class UsuarioServicesImp implements UsuarioServices, UserDetailsService {
 	
 	@Autowired
 	private UsuarioRepository repoUsuario;
+	
+	@Autowired
+	private EmailService srvEmail;
 	
 	public List<Usuario> getUsuarios(){
 		return repoUsuario.findAll();
@@ -94,5 +99,17 @@ public class UsuarioServicesImp implements UsuarioServices, UserDetailsService {
 		response.put("status", HttpStatus.OK);
 		response.put("mensaje", "Usuario Creado");
 		return new ResponseEntity<Object>(response, HttpStatus.OK);	
+	}
+
+	@Override
+	public boolean resetPassword(String email) {
+		Usuario usuario = repoUsuario.findByEmail(email);
+		String newPass = RandomStringUtils.randomAlphanumeric(8);
+		if(srvEmail.restorePassword(new AuthenticationBody(usuario.getEmail(), newPass))) {
+			usuario.setPassword(bCryptPasswordEncoder.encode(newPass));
+			repoUsuario.save(usuario);
+			return true;
+		}
+		return false;
 	}
 }

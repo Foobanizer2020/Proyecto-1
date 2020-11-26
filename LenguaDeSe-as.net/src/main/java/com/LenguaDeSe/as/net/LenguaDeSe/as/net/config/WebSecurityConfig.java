@@ -37,8 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.httpBasic().disable().csrf().disable().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests() 
 		.antMatchers(
-				"/api/autenticacion/login/**", 
-				"/api/autenticacion/registro/**",
+				"/api/autenticacion/**",
 				"/api/pais",
 				"/api/fcategoria",
 				"/api/estado/pais/**",
