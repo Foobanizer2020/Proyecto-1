@@ -1,6 +1,5 @@
 package com.LenguaDeSe.as.net.LenguaDeSe.as.net.service;
 
-
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;

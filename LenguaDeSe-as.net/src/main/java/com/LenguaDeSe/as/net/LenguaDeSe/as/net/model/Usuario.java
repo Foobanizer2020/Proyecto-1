@@ -1,5 +1,7 @@
 package com.LenguaDeSe.as.net.LenguaDeSe.as.net.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -38,6 +41,12 @@ public class Usuario {
 	
 	@Column(name="idioma")
 	private Integer idioma;
+	
+	@ManyToMany
+	private List<Frase> frasesFavoritas;
+	
+	@ManyToMany
+	private List<Palabra> palabrasFavoritas;
 
 	public Usuario() { }
 
@@ -116,5 +125,20 @@ public class Usuario {
 
 	public void setIdioma(Integer idioma) {
 		this.idioma = idioma;
+	}
+	public List<Frase> getFrasesFavoritas() {
+		return frasesFavoritas;
+	}
+
+	public void setFrasesFavoritas(List<Frase> frasesFavoritas) {
+		this.frasesFavoritas = frasesFavoritas;
+	}
+
+	public List<Palabra> getPalabrasFavoritas() {
+		return palabrasFavoritas;
+	}
+
+	public void setPalabrasFavoritas(List<Palabra> palabrasFavoritas) {
+		this.palabrasFavoritas = palabrasFavoritas;
 	}
 }
