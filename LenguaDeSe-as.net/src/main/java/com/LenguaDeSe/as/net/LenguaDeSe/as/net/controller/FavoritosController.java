@@ -5,8 +5,8 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +21,9 @@ public class FavoritosController {
 	@Autowired
 	private FavoritosService favoritosService; 
 	
-	@GetMapping
-	public ResponseEntity<Object> getFavoritos(@RequestBody FavoritosData data) {
-		HashMap<String, Object> favoritos = favoritosService.getFavoritos(data.getIdUsuario());
+	@GetMapping("{idUsuario}")
+	public ResponseEntity<Object> getFavoritos(@PathVariable Integer idUsuario) {
+		HashMap<String, Object> favoritos = favoritosService.getFavoritos(idUsuario);
 		if(favoritos == null) {
 			HashMap<String, String> response = new HashMap<>();
 			response.put("status", "failure");
@@ -52,7 +52,7 @@ public class FavoritosController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
-	@DeleteMapping
+	@PostMapping("{idUsuario}")
 	public ResponseEntity<Object> deleteFavorito(@RequestBody FavoritosData data) {
 		Object favorito;
 		if(data.getTipo().equals(FavoritosData.FRASE)) {
