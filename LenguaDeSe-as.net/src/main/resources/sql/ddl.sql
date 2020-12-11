@@ -301,10 +301,10 @@ insert into paises (abreviatura, pais) values
 	("MX", "Mexico"), ("US", "Estados Unidos"), ("CA", "Canada"), ("FR", "Francia");
 
 insert into estado (nombre, pais) values 
-	("Guanajuato", 1), ("Queretaro", 1), ("Baja California", 1), ("Ciudad de México", 1), ("México", 1), ("Puebla", 1), 
-	("New York", 2), ("Arizona", 2), ("California", 2), ("Florida", 2), ("Texas", 2), ("Virginia", 2),
-	("Ontario", 3), ("Quebec", 3), ("Manitoba", 3), ("Yukón", 3), ("Alberta", 3),
-	("Gran Este", 4), ("Nueva Aquitania", 4), ("Bretaña", 4), ("Isla de Francia", 4), ("Occitania", 4);
+	("Guanajuato", 3), ("Queretaro", 3), ("Baja California", 3), ("Ciudad de México", 3), ("México", 3), ("Puebla", 3), 
+	("New York", 4), ("Arizona", 4), ("California", 4), ("Florida", 4), ("Texas", 4), ("Virginia", 4),
+	("Ontario", 5), ("Quebec", 5), ("Manitoba", 5), ("Yukón", 5), ("Alberta", 5),
+	("Gran Este", 6), ("Nueva Aquitania", 6), ("Bretaña", 6), ("Isla de Francia", 6), ("Occitania", 6);
 
 insert into usuario (email, estado, pais, id_tipo_usuario, idioma, password) values 
 	('admin@mail.com', 1, 1, 4, 1, '$2a$10$QRPYAo0t/YTvh.lQpuNeYOehVzWd1E4znI5bvtyas/my5Zm3agcey'),

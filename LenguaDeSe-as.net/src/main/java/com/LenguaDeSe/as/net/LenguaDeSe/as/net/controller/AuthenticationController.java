@@ -62,7 +62,7 @@ public class AuthenticationController {
     @SuppressWarnings("rawtypes")
     @PostMapping("/registro")
     public ResponseEntity register(@RequestBody Usuario usuario) {
-    	usuario.setId_tipo_usuario(3);
+    	usuario.setId_tipo_usuario(6);
         return usuarios.registrarUsuario(usuario);
     }
     

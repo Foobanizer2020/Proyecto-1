@@ -63,7 +63,8 @@ public class PaisCtrl {
 			return new ResponseEntity<>(response,HttpStatus.OK);
 		}
 	@DeleteMapping("{id}")
-	public ResponseEntity<Object> deletPais(@PathVariable Pais pais){
+	public ResponseEntity<Object> deletPais(@PathVariable Integer id){
+		Pais pais = servPais.getPais(id);
 		servPais.deletePais(pais);
 		
 		HashMap<String,String> response = new HashMap<>();
